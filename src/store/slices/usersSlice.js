@@ -1,6 +1,6 @@
-import { createSlice } from 'redux/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-consg usersSlice = createSlice({
+const usersSlice = createSlice({
     name: 'users',
     initialState: {
         date: []
