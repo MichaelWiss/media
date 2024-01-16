@@ -4,6 +4,14 @@ import { fetchUsers, addUser } from '../store';
 import Skeleton from './Skeleton';
 import Button from './Button';
 
+function useThunk(thunk) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  
+}
+
+
+
 function UsersList() {
   const [isLoadingUsers, setIsLoadingUsers] = useState(false);
   const [loadingUsersError, setLoadingUsersError] = useState(null);
@@ -27,7 +35,10 @@ function UsersList() {
   }, [dispatch]);
 
   const handleUserAdd = () => {
-    dispatch(addUser());
+    dispatch(addUser())
+      .unwrap()
+      .catch(err => setCreatingUserError(err))
+      .finally(() => setIsCreatingUser(false));
   };
 
   if (isLoadingUsers) {
@@ -49,9 +60,13 @@ function UsersList() {
   return <div>
   <div className="flex flex-row justify-between m-3">
     <h1 className="m-2 text-xl">Users</h1>
-    <Button onClick={handleUserAdd}>
+    {
+      isCreatingUser ? 'Creating User...'
+      : <Button onClick={handleUserAdd}>
       + Add User
     </Button>
+    }
+    {creatingUserError && 'Error creating User...'}
   </div>
     {renderedUsers}
   </div>;
