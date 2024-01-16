@@ -7,7 +7,17 @@ import Button from './Button';
 function useThunk(thunk) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  
+  const dispatch = useDispatch;
+
+  const runThunk = () => {
+    setIsLoading(true);
+    dispatch(thunk())
+    .unwrap()
+    .catch()
+    .finally(() => setIsLoading(false));
+  };
+
+  return[]
 }
 
 
