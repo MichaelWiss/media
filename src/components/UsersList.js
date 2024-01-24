@@ -5,21 +5,25 @@ import { fetchUsers, addUser } from '../store';
 import Skeleton from './Skeleton';
 import Button from './Button';
 
+
 function useThunk(thunk) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
-  const runThunk = useCallback(() => {
-    setIsLoading(true);
-    dispatch(thunk())
-    .unwrap()
-    .catch(err => setError(err))
-    .finally(() => setIsLoading(false));
-  }, [dispatch, thunk]);
+  const runThunk = useCallback(
+    (arg) => {
+      setIsLoading(true);
+      dispatch(thunk(arg))
+        .unwrap()
+        .catch((err) => setError(err))
+        .finally(() => setIsLoading(false));
+    },
+    [dispatch, thunk]
+  );
 
-  return[runThunk, isLoading, error];
-};
+  return [runThunk, isLoading, error];
+}
 
 
 
@@ -27,7 +31,7 @@ function UsersList() {
   const [doFetchUsers, isLoadingUsers, loadingUsersError] = useThunk(fetchUsers);
   const [doCreateUser, isCreatingUser, creatingUserError] = useThunk(addUser);
   const dispatch = useDispatch();
-  const {  data } = useSelector((state) => {
+  const { data } = useSelector((state) => {
     return state.users;
   });
 
