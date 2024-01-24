@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchUsers } from '../thunks/fetchUsers';
 import { addUser } from '../thunks/addUser';
+import { removeUser } from '../thunks/removeUser';  
 
 const usersSlice = createSlice({
     name: 'users',
@@ -34,6 +35,10 @@ const usersSlice = createSlice({
             state.isLoading = false;
             state.error = action.error;
         });
+
+        builder.addCase();
+        builder.addCase();
+        builder.addCase();
     },
 });
 
