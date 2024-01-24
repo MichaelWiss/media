@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers, addUser } from '../store';
@@ -16,6 +17,7 @@ function useThunk(thunk) {
     .catch(err => setError(err))
     .finally(() => setIsLoading(false));
   }, [dispatch, thunk]);
+
   return[runThunk, isLoading, error];
 };
 
@@ -23,8 +25,7 @@ function useThunk(thunk) {
 
 function UsersList() {
   const [doFetchUsers, isLoadingUsers, loadingUsersError] = useThunk(fetchUsers);
-  const [isCreatingUser, setIsCreatingUser] = useState(false);
-  const [creatingUserError, setCreatingUserError] = useState(null);
+  const [doCreateUser, isCreatingUser, creatingUserError] = useThunk(addUser);
   const dispatch = useDispatch();
   const {  data } = useSelector((state) => {
     return state.users;
@@ -35,10 +36,7 @@ function UsersList() {
   }, [doFetchUsers]);
 
   const handleUserAdd = () => {
-    dispatch(addUser())
-      .unwrap()
-      .catch(err => setCreatingUserError(err))
-      .finally(() => setIsCreatingUser(false));
+    doCreateUser();
   };
 
   if (isLoadingUsers) {
