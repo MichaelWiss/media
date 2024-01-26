@@ -1,20 +1,8 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Myra"
-    },
-    {
       "name": "Ron Hermiston",
       "id": 2
-    },
-    {
-      "name": "Sarah Conroy",
-      "id": 3
-    },
-    {
-      "name": "Jesse Barrows",
-      "id": 4
     },
     {
       "name": "Chelsea Bosco",

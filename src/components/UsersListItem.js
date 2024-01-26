@@ -9,7 +9,7 @@ function UsersListItem({ user }) {
     const [doRemoveUser, isLoading, error] = useThunk(removeUser);
 
     const handleClick = () => {
-        doRemoveUser();
+        doRemoveUser(user);
     }
 
     return (
