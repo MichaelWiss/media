@@ -23,4 +23,4 @@ const albumsApi = createApi({
 
 });
 
-
+albumsApi.useFetchAlbumsQuery()
