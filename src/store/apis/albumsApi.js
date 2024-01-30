@@ -8,9 +8,9 @@ const albumsApi = createApi({
     endpoints(builder) {
         return {
             fetchAlbums: builder.query({
-                query : () => {
+                query : (user) => {
                     return{
-                        url: '/albbums',
+                        url: '/albums',
                         params: {
                             userId: user.id,
                         },
