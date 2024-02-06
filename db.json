@@ -82,8 +82,12 @@
       "id": 10,
       "title": "Hiking Trip",
       "userId": "2"
+    },
+    {
+      "userId": 2,
+      "title": "Modern Bronze Chips",
+      "id": 11
     }
-    
   ],
   "photos": []
 }
