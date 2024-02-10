@@ -11,13 +11,14 @@ function AlbumsListItem({ album }) {
             removeAlbum(album);
         };
 
-        const header = <div>
-        <Button loading={results.isLoading} onClick={handleRemoveAlbum}>
+        const header = (
+        <>
+        <Button className="mr-2" loading={results.isLoading} onClick={handleRemoveAlbum}>
             <GoTrashcan />
         </Button>
         {album.title}
-        </div>;
-
+        </>
+        );
         return (
             <ExpandablePanel key={album.id} header={header}>
                 List of photos in the album
