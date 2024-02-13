@@ -6,7 +6,7 @@ import AlbumsListItem from './AlbumsListitem';
 
 
 function AlbumsList({ user }) {
-    const { data, error, isLoading } = useFetchAlbumsQuery(user);
+    const { data, error, isFetching } = useFetchAlbumsQuery(user);
     
     const [ addAlbum, results ] = useAddAlbumMutation();
    
@@ -15,7 +15,7 @@ function AlbumsList({ user }) {
     };
 
     let content;
-    if (isLoading) {
+    if (isFetching) {
         content = <Skeleton className="h-10 w-full" times={3} />
     } else if (error) {
         content = <div>Error loading albums.</div>
