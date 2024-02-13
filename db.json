@@ -80,16 +80,6 @@
   "albums": [
     {
       "userId": 2,
-      "title": "Modern Bronze Chips",
-      "id": 11
-    },
-    {
-      "userId": 2,
-      "title": "Tasty Cotton Shoes",
-      "id": 12
-    },
-    {
-      "userId": 2,
       "title": "Rustic Wooden Shoes",
       "id": 13
     },
