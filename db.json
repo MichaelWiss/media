@@ -97,6 +97,21 @@
       "userId": 5,
       "title": "Fantastic Frozen Mouse",
       "id": 18
+    },
+    {
+      "userId": 8,
+      "title": "Handmade Bronze Hat",
+      "id": 20
+    },
+    {
+      "userId": 8,
+      "title": "Small Plastic Cheese",
+      "id": 21
+    },
+    {
+      "userId": 6,
+      "title": "Modern Soft Towels",
+      "id": 22
     }
   ],
   "photos": []
