@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { faker } from '@faker-js/faker';
 
 const photosApi = createApi({
     reducerPath: 'photos',
@@ -18,8 +19,26 @@ const photosApi = createApi({
                     };
                 }
             }),
-            addPhoto: builder.mutation({}),
-            removePhoto: builder.mutation({}),
+            addPhoto: builder.mutation({
+                query: (album) => {
+                    return {
+                        method: 'POST',
+                        url: '/photos',
+                        body: {
+                            albumId: album.id,
+                            url: faker.image.abstract(150, 150, true)
+                        }
+                    };
+                }
+            }),
+            removePhoto: builder.mutation({
+                query: () => {
+                    return {
+                        method: 'DELETE',
+                        url: ``
+                    };
+                }
+            }),
         };
     }
 });
