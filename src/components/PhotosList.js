@@ -1,15 +1,22 @@
 import { useFetchPhotosQuery, useAddPhotoMutation } from "../store";
 import Button from './Button';
+import Skeletonn from './Skeleton';
+import PhotosListItem from './PhotosListitem';
 
 
 function PhotosList({ album }) {
 
-    useFetchPhotosQuery( album );
+    const {data, isFetching, error} = useFetchPhotosQuery( album );
     const [addPhoto, addPhotoResults] = useAddPhotoMutation();
 
     const handleAddPhoto = () => {
         addPhoto(album);
     };
+
+    let content;
+    if (isFetching) {
+        content = <Skeleton className="h-8 w-8" times={4} />
+    }
 
     return <div>
         <div className="m-2 flex flex-row items-center justify-between">
